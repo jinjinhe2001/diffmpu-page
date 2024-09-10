@@ -6,12 +6,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Neural Flow Maps</title>
+    <title>Diff MPU</title>
     <link rel="icon" type="image/x-icon" href="favicon.png">
 
-    <meta name="description" content="Neural Flow Maps">
-    <meta name="keywords" content="Neural Flow Maps">
-    <meta name="author" content="Neural Flow Maps">
+    <meta name="description" content="Diff MPU">
+    <meta name="keywords" content="Diff MPU">
+    <meta name="author" content="Diff MPU">
 
     <link rel="icon" type="image/png" href="../../img/favicon.png">
 
@@ -62,24 +62,26 @@
                 <div class="bg-white">
 					<div class="col-md-12 column" style="margin-top: 0px; text-align: center" >
                         <h1> <span class = "myFont">
-                            Fluid Simulation on Neural Flow Maps
+                            Multi-level Partition of Unity on Differentiable Moving Particles
                         </h1>
                         <div class="col-md-12 column" style="margin-top: 2px; margin-bottom: 12px">
-                            <h5><span class = "myFont2">ACM Transactions on Graphics (Proc. SIGGRAPH Asia 2023)</span></h4>
+                            <h5><span class = "myFont2">ACM Transactions on Graphics (Proc. SIGGRAPH Asia 2024)</span></h4>
                         </div>
                         <div class="col-md-12 column" style="margin-top: 2px; margin-bottom: 12px">
                                 <h6>
-                                <span class = "myFont2"><a href="https://yitongdeng.github.io/">Yitong Deng</a><sup>1</sup>, 
-                                    <a href="https://kovenyu.com/">Hong-Xing "Koven" Yu</a><sup>2</sup>, 
-                                    <a href="https://serev99.github.io/">Diyang Zhang</a><sup>1</sup>, 
-                                    <a href="https://jiajunwu.com/">Jiajun Wu</a><sup>2</sup>, 
-                                    and <a href="https://faculty.cc.gatech.edu/~bozhu/">Bo Zhu</a><sup>1,3</sup>
+                                <span class = "myFont2"><a href="https://jinjinhe2001.github.io/">Jinjin He</a><sup>1</sup>, 
+                                    <a href="">Taiyuan Zhang</a><sup>1</sup>, 
+                                    <a href="">Hiroki Kobayashi</a><sup>3</sup>, 
+                                    <a href="">Atsushi Kawamoto</a><sup>3</sup>, 
+                                    <a href="">Yuqing Zhou</a><sup>4</sup>, 
+                                    <a href="">Tsuyoshi Nomura</a><sup>3</sup>, 
+                                    and <a href="https://faculty.cc.gatech.edu/~bozhu/">Bo Zhu</a><sup>2</sup>
                                 </span>
                                 </h6>
                             <div style="line-height:65%;">
                                 <br>
                             </div>
-                            <h6><span class = "myFont2"><sup>1</sup> Dartmouth College; <sup>2</sup> Stanford University; <sup>3</sup> Georgia Institute of Technology</span></a></h6>
+                            <h6><span class = "myFont2"><sup>1</sup> Dartmouth College; <sup>2</sup> Georgia Institute of Technology; <sup>3</sup> Toyota Central R&D Labs., Inc.; <sup>4</sup> Toyota Research Institute of North America</span></a></h6>
                         </div> 
                     </div>
                     <div class="col-md-12 column"><h6></h6></div> 
@@ -95,25 +97,7 @@
                     <div class="col-md-12 column">
                         <p>
                             <span class = "myFont2">
-                                We introduce Neural Flow Maps, a novel simulation method bridging the
-                                emerging paradigm of implicit neural representations with fluid simulation
-                                based on the theory of flow maps, to achieve state-of-the-art simulation of 
-                                inviscid fluid phenomena. We devise a novel hybrid neural field representation,
-                                Spatially Sparse Neural Fields (SSNF), which fuses small neural networks
-                                with a pyramid of overlapping, multi-resolution, and spatially sparse grids,
-                                to compactly represent long-term spatiotemporal velocity fields at high
-                                accuracy. With this neural velocity buffer in hand, we compute long-term,
-                                bidirectional flow maps and their Jacobians in a mechanistically symmetric
-                                manner, to facilitate drastic accuracy improvement over existing solutions.
-                                These long-range, bidirectional flow maps enable high advection accuracy
-                                with low dissipation, which in turn facilitates high-fidelity incompressible
-                                flow simulations that manifest intricate vortical structures. We demonstrate
-                                the efficacy of our neural fluid simulation in a variety of challenging simulation 
-                                scenarios, including leapfrogging vortices, colliding vortices, vortex reconnections, 
-                                as well as vortex generation from moving obstacles and density differences. 
-                                Our examples show increased performance over existing
-                                methods in terms of energy conservation, visual complexity, adherence to
-                                experimental observations, and preservation of detailed vortical structures.                          
+                                We introduce a differentiable moving particle representation based on the multi-level partition of unity (MPU) to represent dynamic implicit geometries. At the core of our representation are two groups of particles, named feature particles and sample particles, which can move in space and produce dynamic surfaces according to external velocity fields or optimization gradients. These two particle groups iteratively guide and correct each other by alternating their roles as inputs and outputs. Each feature particle carries a set of coefficients for a local quadratic patch. These particle patches are assembled with partition-of-unity weights to derive a continuous implicit global shape. Each sampling particle carries its position and orientation, serving as dense surface samples for optimization tasks. Based on these moving particles, we develop a fully differentiable framework to infer and evolve highly detailed implicit geometries, enhanced by a multi-level background grid for particle adaptivity, across different inverse tasks. We demonstrated the efficacy of our representation through various benchmark comparisons with state-of-the-art neural representations, achieving lower memory consumption, fewer training iterations, and orders of magnitude higher accuracy in handling topologically complex objects and dynamic tracking tasks.
                             </span>
                         </p>
                     </div>
@@ -141,7 +125,7 @@
                             <!-- <span class = "myFont2">
                                 [<a href="https://github.com/yitongdeng-projects/neural_flow_maps_code">Github</a>]                     
                             </span> -->
-                            <a href="https://github.com/yitongdeng-projects/neural_flow_maps_code"><img src="assets/icons/github-mark.png" style="width:45px"></a>
+                            <a href="https://github.com/jinjinhe2001/diffmpu"><img src="assets/icons/github-mark.png" style="width:45px"></a>
                         </p>
                     </div>
 			
@@ -203,14 +187,14 @@
                         <div class="col-md-12 column">
                             <div class="courier ">
 
-    @article{deng2023neural,<br>
-        &nbsp;title={Fluid Simulation on Neural Flow Maps},<br>
-        &nbsp;author={Yitong Deng and Hong-Xing Yu and Diyang Zhang and Jiajun Wu and Bo Zhu},<br>
+    @article{he2024diffmpu,<br>
+        &nbsp;title={Multi-level Partition of Unity on Differentiable Moving Particles},<br>
+        &nbsp;author={Jinjin He and Taiyuan Zhang and Hiroki Kobayashi and Atsushi Kawamoto and Yuqing Zhou and Tsuyoshi Nomura and Bo Zhu},<br>
         &nbsp;journal={ACM Trans. Graph.},<br>
         &nbsp;volume={42},<br>
         &nbsp;number={6},<br>
         &nbsp;article={244},<br>
-        &nbsp;year={2023},<br>
+        &nbsp;year={2024},<br>
        }
                             </div>
                         </div>                      
@@ -229,7 +213,7 @@
             <div class="container text-xs-center">
 
                 <div class="nk-footer-text">
-                    <p>Copyright &copy Yitong Deng</p>
+                    <p>Copyright &copy Jinjin He</p>
                 </div>
             </div>
         </div>
